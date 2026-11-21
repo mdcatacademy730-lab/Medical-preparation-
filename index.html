@@ -6,13 +6,15 @@
 <title>MEDKPK - BS Paramedics 1st Semester</title>
 <meta name="theme-color" content="#0d9488">
 <style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;background:#f0fdfa}.header{background:#0d9488;color:white;padding:20px;text-align:center}.header h1{margin:0;font-size:26px}.container{padding:16px;max-width:650px;margin:auto}.card{background:white;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer;border:1px solid #e2e8f0}.card h2{margin:0;color:#0f172a;font-size:19px}.card p{color:#64748b;margin:6px 0 0;font-size:14px}.btn{background:#0d9488;color:white;border:none;padding:13px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}.btn2{background:white;color:#0d9488;border:2px solid #0d9488}.installBtn{background:#f59e0b;color:white;border:none;padding:13px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-bottom:14px;font-weight:bold;display:none}.opt{background:#f8fafc;border:2px solid #e2e8f0;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer}.opt.correct{background:#dcfce7;border-color:#22c55e}.opt.wrong{background:#fee2e2;border-color:#ef4444}.explain{background:#fef9c3;padding:12px;border-radius:10px;display:none;margin-top:10px}.hidden{display:none}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:10px 0}.progress div{height:100%;background:#0d9488;width:0%}
+*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;background:#f0fdfa}.header{background:#0d9488;color:white;padding:20px;text-align:center}.header h1{margin:0;font-size:26px}.container{padding:16px;max-width:650px;margin:auto}.card{background:white;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer;border:1px solid #e2e8f0}.card h2{margin:0;color:#0f172a;font-size:19px}.card p{color:#64748b;margin:6px 0 0;font-size:14px}.topCard{background:#0d9488;border-radius:16px;padding:18px;margin-bottom:14px;color:white}.topCard h2{color:white;margin:0}.topCard p{color:#ccfbf1;margin:6px 0 0}.btn{background:#0d9488;color:white;border:none;padding:13px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}.btn2{background:white;color:#0d9488;border:2px solid #0d9488}.installBtn{background:#f59e0b;color:white;border:none;padding:13px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-bottom:14px;font-weight:bold;display:none}.opt{background:#f8fafc;border:2px solid #e2e8f0;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer}.opt.correct{background:#dcfce7;border-color:#22c55e}.opt.wrong{background:#fee2e2;border-color:#ef4444}.explain{background:#fef9c3;padding:12px;border-radius:10px;display:none;margin-top:10px}.hidden{display:none}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:10px 0}.progress div{height:100%;background:#0d9488;width:0%}
 </style>
 </head>
 <body>
 <div class="header"><h1>MEDKPK</h1><p>BS Paramedics - 1st Semester<br>Chapter Wise - Past Paper Pattern</p></div>
 <div class="container">
-<div id="home"><button class="installBtn" id="installBtn">📲 Install App - MEDKPK</button><div id="semCard"></div></div>
+<div id="home"><button class="installBtn" id="installBtn">📲 Install App - MEDKPK</button>
+<div class="topCard"><h2>Paramedics - 1st Semester</h2><p>BS Paramedics | KMU Past Paper Pattern | Chapter Wise</p></div>
+<div id="semCard"></div></div>
 <div id="subjects" class="hidden"><div class="topbar"><b id="subTitle">Chapters</b><button id="back1">Back</button></div><div id="subList"></div></div>
 <div id="quiz" class="hidden"><div class="topbar"><b id="quizTitle">Quiz</b><span id="score">Score: 0</span></div><div class="progress"><div id="prog"></div></div><div id="qBox"></div><button class="btn btn2" id="nextBtn">Next Question</button><button class="btn" id="homeBtn">Home</button></div>
 </div>
@@ -20,9 +22,9 @@
 var deferredPrompt=null;window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;document.getElementById("installBtn").style.display="block";});document.getElementById("installBtn").onclick=function(){if(deferredPrompt){deferredPrompt.prompt();}};
 var DATA=[
 {subject:"Anatomy-I",chapters:[
-{ch:"Ch 1: Thorax & Heart",qs:[
+{ch:"Ch 1: Thorax and Heart",qs:[
 {q:"Each intercostal nerve enters intercostal space:",o:["Between external and internal intercostal","Between endothoracic fascia and innermost","Between parietal pleura and membrane","Between internal and innermost"],a:0,e:"Intercostal nerve runs between internal and innermost intercostal."},
-{q:"Blood flows from right ventricle into:",o:["Inferior vena cava","Left ventricle","Pulmonary arteries","Pulmonary veins"],a:2,e:"Right ventricle -> Pulmonary arteries."},
+{q:"Blood flows from right ventricle into:",o:["Inferior vena cava","Left ventricle","Pulmonary arteries","Pulmonary veins"],a:2,e:"Right ventricle pumps to pulmonary arteries."},
 {q:"Bronchial arteries arise from:",o:["Internal thoracic artery","Arch of aorta","Descending thoracic aorta","Ascending aorta"],a:2,e:"Bronchial arteries from descending thoracic aorta."},
 {q:"Innervation of Rectus abdominis:",o:["Lower six thoracic nerves","Iliohypogastric nerve","Vagus nerve","Phrenic nerve"],a:0,e:"Rectus abdominis: T7-T12."},
 {q:"Joint between manubrium and body of sternum:",o:["Sternal angle","Manubriosternal joint","Xiphisternal joint","Sternoclavicular joint"],a:1,e:"Manubriosternal joint at sternal angle."},
@@ -32,7 +34,7 @@ var DATA=[
 {q:"Articular part of rib tubercle articulates with:",o:["Body of vertebra","Transverse process","Costal cartilage","Adjacent rib"],a:1,e:"Tubercle with transverse process."},
 {q:"Ampulla of Vater is connection of:",o:["1st part duodenum and pancreas","2nd part duodenum and pancreas","3rd part duodenum and pancreas","4th part duodenum and pancreas"],a:1,e:"Ampulla opens in 2nd part duodenum."}
 ]},
-{ch:"Ch 2: Abdomen & Pelvis",qs:[
+{ch:"Ch 2: Abdomen and Pelvis",qs:[
 {q:"Greater omentum attaches:",o:["Greater curvature with ascending colon","Greater curvature with transverse colon","Greater curvature with spleen","Greater curvature with liver"],a:1,e:"Greater omentum: greater curvature to transverse colon."},
 {q:"Which is retroperitoneal?",o:["Pancreas","1st part duodenum","Ascending colon","Spleen"],a:0,e:"Pancreas is retroperitoneal."},
 {q:"Pelvic brim bounded posteriorly by:",o:["Sacral promontory","Symphysis pubis","Iliopectineal line","Pubic arch"],a:0,e:"Sacral promontory posteriorly."},
@@ -46,7 +48,7 @@ var DATA=[
 ]}
 ]},
 {subject:"Physiology-I",chapters:[
-{ch:"Ch 1: Cell & Membrane Transport",qs:[
+{ch:"Ch 1: Cell and Membrane Transport",qs:[
 {q:"Which lipid is almost exclusively on cytosolic leaflet?",o:["Phosphatidylcholine","Sphingomyelin","Phosphatidylserine","Cholesterol"],a:2,e:"Phosphatidylserine is inner leaflet."},
 {q:"If membrane carbohydrates lost, cell will show:",o:["Increased ATP","Impaired adhesion and increased water loss","Increased cholesterol","Decreased Na transport"],a:1,e:"Glycocalyx helps adhesion and holds water."},
 {q:"Water movement through aquaporins does NOT involve:",o:["Binding","Conformational change","ATP","Down gradient"],a:1,e:"Aquaporin is channel, no conformational change."},
@@ -58,9 +60,9 @@ var DATA=[
 {q:"Cells on surface of body are called:",o:["Non-keratinized stratified","Keratinized stratified epithelium","Cuboidal","Columnar"],a:1,e:"Skin has keratinized stratified epithelium."},
 {q:"Trigger for skeletal muscle contraction:",o:["Ca binding to tropomyosin","ATP binding to myosin","Ca binding to troponin","K binding to myosin"],a:2,e:"Ca binds troponin, exposes binding sites."}
 ]},
-{ch:"Ch 2: GIT, Renal & Respiratory",qs:[
+{ch:"Ch 2: GIT, Renal and Respiratory",qs:[
 {q:"Trypsinogen converted to trypsin by:",o:["Acetylcholine","Enterokinase","Histamine","Secretin"],a:1,e:"Enterokinase activates trypsinogen."},
-{q:"Maximum water reabsorption occurs in:",o:["Proximal convoluted tubules","Descending limb","Ascending limb","Distal tubules"],a:0,e:"PCT reabsorbs 65% water."},
+{q:"Maximum water reabsorption occurs in:",o:["Proximal convoluted tubules","Descending limb","Ascending limb","Distal tubules"],a:0,e:"PCT reabsorbs 65 percent water."},
 {q:"Bile pigments eliminated via:",o:["Blood","Sweat","Urine and stool","Saliva"],a:2,e:"Bilirubin in stool and urine."},
 {q:"Which is NOT actively reabsorbed?",o:["Glucose","Amino acids","Potassium","Chloride"],a:3,e:"Chloride follows Na passively."},
 {q:"Pancreatic secretions secreted in:",o:["Colon","Stomach","Duodenum","Esophagus"],a:2,e:"Pancreatic juice enters duodenum."},
@@ -72,7 +74,7 @@ var DATA=[
 ]}
 ]},
 {subject:"Biochemistry-I",chapters:[
-{ch:"Ch 1: Carbohydrates & Proteins",qs:[
+{ch:"Ch 1: Carbohydrates and Proteins",qs:[
 {q:"Another name for Vitamin C:",o:["Ascorbic acid","Thiamine","Folic acid","Biotin"],a:0,e:"Vitamin C = Ascorbic acid."},
 {q:"Which is NOT a pyrimidine?",o:["Cytosine","Thymine","Adenine","Uracil"],a:2,e:"Adenine is purine."},
 {q:"Carbohydrate found in DNA:",o:["Ribose","Deoxyribose","Fructose","Glucose"],a:1,e:"DNA has deoxyribose."},
@@ -84,7 +86,7 @@ var DATA=[
 {q:"Enzyme for milk protein in infants:",o:["Pepsin","Rennin","Trypsin","Chymotrypsin"],a:1,e:"Rennin curdles milk."},
 {q:"Principal cation of ECF:",o:["Mg","K","Potassium","Sodium"],a:3,e:"Na is main ECF cation."}
 ]},
-{ch:"Ch 2: Lipids, Enzymes & Vitamins",qs:[
+{ch:"Ch 2: Lipids, Enzymes and Vitamins",qs:[
 {q:"RDS associated with insufficient:",o:["Proteins","Cholesterol","Phospholipids (Surfactant)","Carbohydrates"],a:2,e:"Surfactant deficiency causes RDS."},
 {q:"Enzyme forming cAMP from ATP:",o:["Adenylate cyclase","Phospholipase C","Alanine transaminase","Thyroid peroxidase"],a:0,e:"Adenylate cyclase makes cAMP."},
 {q:"Circulatory form of CO2:",o:["CO2 gas","Bicarbonate HCO3-","Carbonic acid","Carbamino"],a:1,e:"CO2 mainly as HCO3-."},
@@ -98,7 +100,7 @@ var DATA=[
 ]}
 ]},
 {subject:"English-I",chapters:[
-{ch:"Ch 1: Grammar & Tenses",qs:[
+{ch:"Ch 1: Grammar and Tenses",qs:[
 {q:"He ___ milk every morning.",o:["Take","Takes","Taking","Took"],a:1,e:"He takes - present simple."},
 {q:"I got him superior ___ me.",o:["Than","Then","To","From"],a:2,e:"Superior to."},
 {q:"He worked a lot but failed. BUT is:",o:["Subordinate","Correlative conjunction","Dependent","Independent"],a:1,e:"But is coordinating conjunction."},
@@ -110,7 +112,7 @@ var DATA=[
 {q:"More than one student ___ absent.",o:["Have been","Had been","Was","Were"],a:2,e:"More than one = singular, was."},
 {q:"___ is an interjection.",o:["Go","Otherwise","Hurrah","How"],a:2,e:"Hurrah is interjection."}
 ]},
-{ch:"Ch 2: Vocabulary & Comprehension",qs:[
+{ch:"Ch 2: Vocabulary and Comprehension",qs:[
 {q:"Synonym of notice:",o:["Ignore","Note down","Support","Observe"],a:3,e:"Notice = Observe."},
 {q:"He has got through all his paper. Means:",o:["Passed","Appeared","Attempt","Failed"],a:0,e:"Get through = pass."},
 {q:"Health is too important to be ___",o:["Detested","Deprived","Neglected","None"],a:2,e:"Too important to be neglected."},
@@ -136,7 +138,7 @@ var DATA=[
 {q:"First Governor General:",o:["Liaquat Ali Khan","Quaid-e-Azam","Khawaja Nazimuddin","Ghulam Muhammad"],a:1,e:"Quaid-e-Azam first GG."},
 {q:"First PM of Pakistan:",o:["Quaid-e-Azam","Liaquat Ali Khan","Khawaja Nazimuddin","Ayub Khan"],a:1,e:"Liaquat Ali Khan first PM."}
 ]},
-{ch:"Ch 2: Constitution & Geography",qs:[
+{ch:"Ch 2: Constitution and Geography",qs:[
 {q:"First Constitution enforced in:",o:["1956","1962","1973","1947"],a:0,e:"First Constitution 1956."},
 {q:"1973 Constitution enforced on:",o:["14 Aug 1973","23 March 1973","14 Aug 1972","1 Jan 1974"],a:0,e:"1973 Constitution 14 Aug 1973."},
 {q:"Pak-China border length:",o:["595 km","523 km","585 km","600 km"],a:1,e:"About 523 km."},
@@ -178,4 +180,13 @@ var DATA=[
 ];
 var curSub=0, curChap=0, qIdx=0, score=0;
 function showHome(){document.getElementById("home").classList.remove("hidden");document.getElementById("subjects").classList.add("hidden");document.getElementById("quiz").classList.add("hidden");renderHome();}
-function renderHome(){var h='<div class="card" style="background:#0d9488;color:white"><h2 style="color:white">Paramedics - 1st Semester</h2><p style="color:#ccfbf1">BS Paramedics | KMU Past Paper Pattern | Chapter Wise</p></div>';for(var i=0;i<DATA.length;i++)
+function renderHome(){var h="";for(var i=0;i<DATA.length;i++){h+='<div class="card" data-s="'+i+'"><h2>'+DATA[i].subject+'</h2><p>'+DATA[i].chapters.length+' Chapters - Tap to Open</p></div>';}document.getElementById("semCard").innerHTML=h;var cards=document.getElementById("semCard").getElementsByClassName("card");for(var j=0;j<cards.length;j++){cards[j].onclick=(function(ii){return function(){showChapters(ii);};})(j);}}
+function showChapters(s){curSub=s;document.getElementById("home").classList.add("hidden");document.getElementById("subjects").classList.remove("hidden");document.getElementById("subTitle").innerText=DATA[s].subject+" - Chapters";var h="";for(var i=0;i<DATA[s].chapters.length;i++){h+='<div class="card" data-c="'+i+'"><h2>'+DATA[s].chapters[i].ch+'</h2><p>'+DATA[s].chapters[i].qs.length+' MCQs - Tap to Start</p></div>';}document.getElementById("subList").innerHTML=h;var cards=document.getElementById("subList").getElementsByClassName("card");for(var j=0;j<cards.length;j++){cards[j].onclick=(function(ii){return function(){startQuiz(ii);};})(j);}}
+function startQuiz(c){curChap=c;qIdx=0;score=0;document.getElementById("subjects").classList.add("hidden");document.getElementById("quiz").classList.remove("hidden");document.getElementById("quizTitle").innerText=DATA[curSub].chapters[curChap].ch;showQ();}
+function showQ(){var list=DATA[curSub].chapters[curChap].qs;var q=list[qIdx];document.getElementById("score").innerText="Score: "+score+" / "+list.length;document.getElementById("prog").style.width=(qIdx/list.length*100)+"%";var h='<div class="card"><b>Q'+(qIdx+1)+'. '+q.q+'</b>';for(var i=0;i<q.o.length;i++){h+='<div class="opt" data-opt="'+i+'">'+q.o[i]+'</div>';}h+='<div class="explain" id="exp"><b>Explanation:</b> '+q.e+'</div></div>';document.getElementById("qBox").innerHTML=h;var opts=document.getElementById("qBox").getElementsByClassName("opt");for(var k=0;k<opts.length;k++){opts[k].onclick=(function(el,ii){return function(){checkAns(el,ii,q.a);};})(opts[k],k);}}
+function checkAns(el,ii,ans){var opts=document.getElementById("qBox").getElementsByClassName("opt");for(var i=0;i<opts.length;i++){opts[i].style.pointerEvents="none";}if(ii===ans){el.classList.add("correct");score++;}else{el.classList.add("wrong");opts[ans].classList.add("correct");}document.getElementById("score").innerText="Score: "+score;document.getElementById("exp").style.display="block";}
+function nextQ(){var list=DATA[curSub].chapters[curChap].qs;if(qIdx<list.length-1){qIdx++;showQ();}else{alert("Chapter Finished! Score: "+score+" / "+list.length);showHome();}}
+document.getElementById("back1").onclick=function(){showHome();};document.getElementById("nextBtn").onclick=function(){nextQ();};document.getElementById("homeBtn").onclick=function(){showHome();};renderHome();
+</script>
+</body>
+</html>

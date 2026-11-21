@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEDKPK - MDCAT & Paramedics</title>
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:#f0fdfa}
+.header{background:#0d9488;color:white;padding:20px;text-align:center}
+.header h1{margin:0;font-size:26px}
+.header p{margin:5px 0 0;opacity:.9}
+.container{padding:16px;max-width:600px;margin:auto}
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer}
+.card h2{margin:0;color:#0f172a}
+.card p{color:#64748b;margin:6px 0 0}
+.btn{background:#0d9488;color:white;border:none;padding:12px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}
+.btn2{background:white;color:#0d9488;border:2px solid #0d9488}
+.opt{background:#f8fafc;border:2px solid #e2e8f0;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer}
+.opt.correct{background:#dcfce7;border-color:#22c55e}
+.opt.wrong{background:#fee2e2;border-color:#ef4444}
+.explain{background:#fef9c3;padding:12px;border-radius:10px;display:none;margin-top:10px}
+.hidden{display:none}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="header"><h1>MEDKPK</h1><p>MDCAT & Paramedics MCQ Practice</p></div>
+<div class="container">
+<div id="home">
+<div class="card" onclick="showSubjects('mdcat')"><h2>🩺 MDCAT</h2><p>Biology • Chemistry • Physics • English • Logical Reasoning<br>Medium Level MCQs</p></div>
+<div class="card" onclick="showSubjects('para')"><h2>💉 Paramedics</h2><p>Anatomy • Physiology • Biochemistry • Pharmacology<br>Medium Level MCQs</p></div>
+<p style="text-align:center;color:#64748b">Roz 20 MCQs solve karo, 3 mahine me top karo.</p>
+</div>
+<div id="subjects" class="hidden">
+<div class="topbar"><b id="subTitle">Subjects</b><button onclick="goHome()">Back</button></div>
+<div id="subList"></div>
+</div>
+<div id="quiz" class="hidden">
+<div class="topbar"><b id="quizTitle">Quiz</b><span id="score">Score: 0</span></div>
+<div id="qBox"></div>
+<button class="btn btn2" onclick="nextQ()">Next Question →</button>
+<button class="btn" onclick="goHome()">Home</button>
+</div>
+</div>
+<script>
+const data = {
+mdcat: { title: "MDCAT Subjects", subjects: {
+"Biology - Cell": [
+{q:"Which organelle is involved in detoxification in liver cells?",o:["Golgi body","Smooth ER","Rough ER","Lysosome"],a:1,e:"Smooth ER detox aur lipid banata hai, Rough ER protein banata hai."},
+{q:"Which is powerhouse of cell?",o:["Nucleus","Ribosome","Mitochondria","Golgi"],a:2,e:"Mitochondria me ATP banta hai."},
+{q:"DNA is present in?",o:["Only Nucleus","Nucleus & Mitochondria","Only Cytoplasm","Ribosome"],a:1,e:"Mitochondria me bhi apna DNA hota hai."}
+],
+"Chemistry - Mole": [
+{q:"Which has maximum atoms in 1g?",o:["H2","O2","CH4","CO2"],a:0,e:"H2 ka molar mass sab se kam, to moles zyada."},
+{q:"pH of neutral solution at 25°C is?",o:["0","7","14","1"],a:1,e:"Neutral = 7, Acid <7, Base >7."}
+] } },
+para: { title: "Paramedics Subjects", subjects: {
+"Anatomy": [
+{q:"Which bone is called Collar bone?",o:["Scapula","Clavicle","Sternum","Humerus"],a:1,e:"Clavicle ko Collar bone kehte hain."},
+{q:"Largest bone in human body?",o:["Tibia","Humerus","Femur","Radius"],a:2,e:"Femur thigh ki bone, sab se lambi aur mazboot."}
+],
+"Physiology": [
+{q:"Normal resting heart rate of adult?",o:["40-60","60-100","100-120","120-140"],a:1,e:"Normal 60-100 beats per minute."},
+{q:"Normal Blood Pressure?",o:["90/60","120/80","140/90","160/100"],a:1,e:"Ideal 120/80 mmHg."}
+] } }
+};
+let currentCat="", currentSub="", qIndex=0, score=0;
+function showSubjects(cat){currentCat=cat;document.getElementById('home').classList.add('hidden');document.getElementById('subjects').classList.remove('hidden');document.getElementById('subTitle').innerText=data[cat].title;let h="";for(let s in data[cat].subjects){h+=`<div class="card" onclick="startQuiz('${s}')"><h2>${s}</h2><p>${data[cat].subjects[s].length} MCQs • Medium Level • Tap to Start</p></div>`}document.getElementById('subList').innerHTML=h;}
+function goHome(){document.getElementById('home').classList.remove('hidden');document.getElementById('subjects').classList.add('hidden');document.getElementById('quiz').classList.add('hidden');}
+function startQuiz(sub){currentSub=sub;qIndex=0;score=0;document.getElementById('subjects').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');document.getElementById('quizTitle').innerText=sub;showQ();}
+function showQ(){let list=data[currentCat].subjects[currentSub];let q=list[qIndex];document.getElementById('score').innerText="Score: "+score+" / "+list.length;let h=`<div class="card"><b>Q${qIndex+1}. ${q.q}</b>`;q.o.forEach((opt,i)=>{h+=`<div class="opt" onclick="check(this,${i},${q.a},'${q.e}')">${opt}</div>`});h+=`<div class="explain" id="exp"><b>Explanation:</b> ${q.e}</div></div>`;document.getElementById('qBox').innerHTML=h;}
+function check(el,i,ans,exp){let opts=document.querySelectorAll('.opt');opts.forEach(o=>o.style.pointerEvents='none');if(i===ans){el.classList.add('correct');score++;document.getElementById('score').innerText="Score: "+score;}else{el.classList.add('wrong');opts[ans].classList.add('correct');}document.getElementById('exp').style.display='block';}
+function nextQ(){let list=data[currentCat].subjects[currentSub];if(qIndex<list.length-1){qIndex++;showQ();}else{alert("Test Khatam! Score: "+score+" / "+list.length);goHome();}}
+</script>
+</body>
+</html>

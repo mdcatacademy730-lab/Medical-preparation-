@@ -3,75 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEDKPK - MDCAT & Paramedics</title>
+<title>MEDKPK - Hard MCQs</title>
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 body{margin:0;background:#f0fdfa}
-.header{background:#0d9488;color:white;padding:20px;text-align:center}
-.header h1{margin:0;font-size:26px}
-.header p{margin:5px 0 0;opacity:.9}
-.container{padding:16px;max-width:600px;margin:auto}
+.header{background:#0d9488;color:white;padding:20px;text-align:center;position:sticky;top:0;z-index:10}
+.header h1{margin:0;font-size:28px}
+.container{padding:16px;max-width:650px;margin:auto}
 .card{background:white;border-radius:16px;padding:20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer}
 .card h2{margin:0;color:#0f172a}
 .card p{color:#64748b;margin:6px 0 0}
-.btn{background:#0d9488;color:white;border:none;padding:12px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}
+.btn{background:#0d9488;color:white;border:none;padding:13px 20px;border-radius:10px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}
 .btn2{background:white;color:#0d9488;border:2px solid #0d9488}
-.opt{background:#f8fafc;border:2px solid #e2e8f0;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer}
+.opt{background:#f8fafc;border:2px solid #e2e8f0;padding:13px;border-radius:10px;margin:8px 0;cursor:pointer}
 .opt.correct{background:#dcfce7;border-color:#22c55e}
 .opt.wrong{background:#fee2e2;border-color:#ef4444}
 .explain{background:#fef9c3;padding:12px;border-radius:10px;display:none;margin-top:10px}
 .hidden{display:none}
 .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.badge{background:#ccfbf1;color:#0f766e;padding:3px 8px;border-radius:20px;font-size:12px}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:10px 0}
+.progress div{height:100%;background:#0d9488;width:0%}
 </style>
 </head>
 <body>
-<div class="header"><h1>MEDKPK</h1><p>MDCAT & Paramedics MCQ Practice</p></div>
+<div class="header"><h1>MEDKPK - HARD LEVEL</h1><p>MDCAT & Paramedics | 120 Hard MCQs | All English</p></div>
 <div class="container">
 <div id="home">
-<div class="card" onclick="showSubjects('mdcat')"><h2>🩺 MDCAT</h2><p>Biology • Chemistry • Physics • English • Logical Reasoning<br>Medium Level MCQs</p></div>
-<div class="card" onclick="showSubjects('para')"><h2>💉 Paramedics</h2><p>Anatomy • Physiology • Biochemistry • Pharmacology<br>Medium Level MCQs</p></div>
-<p style="text-align:center;color:#64748b">Roz 20 MCQs solve karo, 3 mahine me top karo.</p>
+<div class="card" onclick="showSubjects('mdcat')"><h2>MDCAT - HARD</h2><p>Biology 20 | Chemistry 20 | Physics 20<br><span class="badge">60 HARD MCQs</span></p></div>
+<div class="card" onclick="showSubjects('para')"><h2>Paramedics - HARD</h2><p>Anatomy 20 | Physiology 20 | Biochemistry 20<br><span class="badge">60 HARD MCQs</span></p></div>
 </div>
-<div id="subjects" class="hidden">
-<div class="topbar"><b id="subTitle">Subjects</b><button onclick="goHome()">Back</button></div>
-<div id="subList"></div>
-</div>
-<div id="quiz" class="hidden">
-<div class="topbar"><b id="quizTitle">Quiz</b><span id="score">Score: 0</span></div>
-<div id="qBox"></div>
-<button class="btn btn2" onclick="nextQ()">Next Question →</button>
-<button class="btn" onclick="goHome()">Home</button>
-</div>
+<div id="subjects" class="hidden"><div class="topbar"><b id="subTitle">Subjects</b><button onclick="goHome()">Back</button></div><div id="subList"></div></div>
+<div id="quiz" class="hidden"><div class="topbar"><b id="quizTitle">Quiz</b><span id="score">Score: 0</span></div><div class="progress"><div id="prog"></div></div><div id="qBox"></div><button class="btn btn2" onclick="nextQ()">Next Question</button><button class="btn" onclick="goHome()">Home</button></div>
 </div>
 <script>
-const data = {
-mdcat: { title: "MDCAT Subjects", subjects: {
-"Biology - Cell": [
-{q:"Which organelle is involved in detoxification in liver cells?",o:["Golgi body","Smooth ER","Rough ER","Lysosome"],a:1,e:"Smooth ER detox aur lipid banata hai, Rough ER protein banata hai."},
-{q:"Which is powerhouse of cell?",o:["Nucleus","Ribosome","Mitochondria","Golgi"],a:2,e:"Mitochondria me ATP banta hai."},
-{q:"DNA is present in?",o:["Only Nucleus","Nucleus & Mitochondria","Only Cytoplasm","Ribosome"],a:1,e:"Mitochondria me bhi apna DNA hota hai."}
+const data={
+mdcat:{title:"MDCAT - Hard",subjects:{
+"Biology - 20 HARD":[
+{q:"A cell in G2 phase has 46 chromosomes. How many chromatids are present?",o:["46","92","23","184"],a:1,e:"In G2, DNA has replicated. Each chromosome has 2 chromatids, so 46 x 2 = 92 chromatids."},
+{q:"A patient has mutation in CFTR gene causing thick mucus in lungs. Which disease is this?",o:["Sickle cell anemia","Cystic fibrosis","Thalassemia","Hemophilia"],a:1,e:"CFTR mutation causes Cystic Fibrosis - thick mucus, recurrent lung infections."},
+{q:"Which of the following is correct for competitive inhibition?",o:["Vmax decreases, Km same","Vmax same, Km increases","Vmax increases, Km decreases","Both decrease"],a:1,e:"Competitive inhibitor increases Km (needs more substrate) but Vmax remains same at high substrate."},
+{q:"If a DNA strand is 3'-ATGCGT-5', what is the mRNA sequence transcribed?",o:["5'-UACGCA-3'","5'-ATGCGT-3'","3'-UACGCA-5'","5'-TACGCA-3'"],a:0,e:"mRNA is complementary to template and uses U instead of T: ATGCGT -> UACGCA."},
+{q:"A couple both carriers for thalassemia (Aa x Aa). Probability of affected child?",o:["0%","25%","50%","100%"],a:1,e:"Aa x Aa gives 1/4 aa affected, 1/2 carrier, 1/4 normal. Autosomal recessive."},
+{q:"Which structure prevents backflow of blood from left ventricle to left atrium?",o:["Aortic valve","Mitral valve","Tricuspid valve","Pulmonary valve"],a:1,e:"Mitral (bicuspid) valve between left atrium and left ventricle prevents backflow."},
+{q:"In C4 plants, first stable product of CO2 fixation is:",o:["3-PGA","Oxaloacetate","RuBP","PEP"],a:1,e:"C4 plants fix CO2 into Oxaloacetate (4-carbon) in mesophyll cells."},
+{q:"A patient has high blood glucose, polyuria and fruity breath. Most likely diagnosis?",o:["Type 2 Diabetes","Diabetic ketoacidosis","Hypoglycemia","Diabetes insipidus"],a:1,e:"Fruity breath + hyperglycemia + polyuria = DKA, due to ketone bodies."},
+{q:"Which of the following has maximum surface area for absorption in small intestine?",o:["Plicae","Villi","Microvilli","All contribute"],a:2,e:"Microvilli on villi increase surface area to maximum, about 600x."},
+{q:"During muscle contraction, which band remains unchanged?",o:["A band","I band","H zone","Sarcomere length"],a:0,e:"A band (myosin length) stays constant. I band and H zone shorten."},
+{q:"A child presents with knock knees, delayed dentition and beaded ribs. Deficiency of?",o:["Vitamin A","Vitamin C","Vitamin D","Vitamin K"],a:2,e:"Vitamin D deficiency in children causes Rickets - beaded ribs, knock knees."},
+{q:"Which hormone is responsible for milk ejection reflex?",o:["Prolactin","Oxytocin","Estrogen","Progesterone"],a:1,e:"Prolactin produces milk, Oxytocin ejects milk (let-down reflex)."},
+{q:"If a cell is placed in hypertonic solution, what happens?",o:["Swells","Shrinks - plasmolysis","No change","Bursts"],a:1,e:"Water moves out of cell to hypertonic solution, cell shrinks."},
+{q:"Which of the following is a second messenger?",o:["Insulin","cAMP","Glucagon","Thyroxine"],a:1,e:"cAMP is classic second messenger for peptide hormones."},
+{q:"A woman has 45 chromosomes with XO karyotype. Diagnosis?",o:["Down syndrome","Turner syndrome","Klinefelter syndrome","Edward syndrome"],a:1,e:"XO = Turner syndrome, female, short stature, webbed neck."},
+{q:"Which part of nephron is impermeable to water?",o:["PCT","Descending limb","Ascending limb of Henle","Collecting duct"],a:2,e:"Ascending limb is impermeable to water but permeable to NaCl, creates concentration gradient."},
+{q:"Crossing over occurs in which stage?",o:["Leptotene","Pachytene","Diplotene","Diakinesis"],a:1,e:"Crossing over occurs in Pachytene stage of Prophase I."},
+{q:"A patient with goitre, weight loss, exophthalmos. Which condition?",o:["Hypothyroidism","Hyperthyroidism - Graves disease","Diabetes","Addison disease"],a:1,e:"Graves disease: hyperthyroidism + exophthalmos + goitre."},
+{q:"Which nitrogenous base is NOT present in DNA?",o:["Adenine","Uracil","Thymine","Guanine"],a:1,e:"Uracil is in RNA only. DNA has Thymine instead of Uracil."},
+{q:"In Hardy-Weinberg, if q=0.2, frequency of heterozygotes (2pq) is:",o:["0.04","0.32","0.64","0.16"],a:1,e:"p=0.8, q=0.2, 2pq = 2 x 0.8 x 0.2 = 0.32."}
 ],
-"Chemistry - Mole": [
-{q:"Which has maximum atoms in 1g?",o:["H2","O2","CH4","CO2"],a:0,e:"H2 ka molar mass sab se kam, to moles zyada."},
-{q:"pH of neutral solution at 25°C is?",o:["0","7","14","1"],a:1,e:"Neutral = 7, Acid <7, Base >7."}
-] } },
-para: { title: "Paramedics Subjects", subjects: {
-"Anatomy": [
-{q:"Which bone is called Collar bone?",o:["Scapula","Clavicle","Sternum","Humerus"],a:1,e:"Clavicle ko Collar bone kehte hain."},
-{q:"Largest bone in human body?",o:["Tibia","Humerus","Femur","Radius"],a:2,e:"Femur thigh ki bone, sab se lambi aur mazboot."}
+"Chemistry - 20 HARD":[
+{q:"What is pH of 0.01 M HCl solution?",o:["1","2","3","12"],a:1,e:"HCl is strong acid, [H+]=0.01=10^-2, pH=-log[H+]=2."},
+{q:"How many moles are in 11.2 L of CO2 at STP?",o:["0.25 mol","0.5 mol","1 mol","2 mol"],a:1,e:"At STP 22.4 L = 1 mol, so 11.2 L = 0.5 mol."},
+{q:"Which has highest boiling point?",o:["HF","HCl","HBr","HI"],a:0,e:"HF has strong hydrogen bonding, so highest boiling point despite lowest molar mass."},
+{q:"For reaction N2 + 3H2 -> 2NH3, if 6 moles H2 react, moles of NH3 formed?",o:["2","4","6","3"],a:1,e:"3 H2 gives 2 NH3, so 6 H2 gives 4 NH3."},
+{q:"Oxidation number of Cr in K2Cr2O7 is:",o:["+3","+6","+4","+7"],a:1,e:"2K=+2, 7O=-14, so 2Cr=+12, Cr=+6."},
+{q:"Which buffer is present in blood?",o:["Acetate","Bicarbonate / Carbonic acid","Phosphate only","Citrate"],a:1,e:"H2CO3 / HCO3- is main blood buffer maintaining pH 7.4."},
+{q:"A patient has metabolic acidosis with pH 7.25. Which compensatory mechanism occurs?",o:["Hypoventilation","Hyperventilation","Kidney excretes base","Decreased breathing"],a:1,e:"In metabolic acidosis, lungs hyperventilate to blow off CO2 and raise pH."},
+{q:"Which of the following is strongest acid?",o:["CH3COOH","H2CO3","HNO3","H3PO4"],a:2,e:"HNO3 is strong mineral acid, others are weak."},
+{q:"Rate of reaction doubles when temperature increases by 10°C. This is due to:",o:["Increase in activation energy","More molecules exceed activation energy","Decrease in collision","Increase in pressure"],a:1,e:"Higher temperature increases fraction of molecules with energy > Ea."},
+{q:"What is molarity of solution with 4g NaOH in 500 mL?",o:["0.1 M","0.2 M","0.4 M","1 M"],a:1,e:"Moles NaOH = 4/40=0.1, Volume=0.5L, Molarity=0.1/0.5=0.2 M."},
+{q:"Which hybridization is in CH4?",o:["sp","sp2","sp3","sp3d"],a:2,e:"CH4 has 4 sigma bonds, tetrahedral, sp3."},
+{q:"Which gas deviates most from ideal behaviour?",o:["H2","He","NH3","N2"],a:2,e:"NH3 has strong intermolecular forces and polar, deviates most."},
+{q:"If Ksp of AgCl is 1.8 x 10^-10, solubility (s) is:",o:["1.8 x 10^-10","1.34 x 10^-5","3.6 x 10^-10","9 x 10^-11"],a:1,e:"Ksp = s^2, s = sqrt(1.8x10^-10) = 1.34 x 10^-5."},
+{q:"A solution has pOH=3. What is its pH?",o:["3","11","7","10"],a:1,e:"pH + pOH = 14, so pH = 14-3 = 11 (basic)."},
+{q:"Which element has highest electronegativity?",o:["Oxygen","Chlorine","Fluorine","Nitrogen"],a:2,e:"Fluorine is most electronegative (3.98)."},
+{q:"In electrochemical cell, oxidation occurs at:",o:["Cathode","Anode","Salt bridge","Both"],a:1,e:"Anode = Oxidation, Cathode = Reduction (AN OX, RED CAT)."},
+{q:"Which is NOT a colligative property?",o:["Osmotic pressure","Freezing point depression","Vapour pressure lowering","Optical activity"],a:3,e:"Optical activity depends on structure, not number of particles."},
+{q:"What is the shape of NH3 molecule?",o:["Tetrahedral","Trigonal pyramidal","Linear","Planar"],a:1,e:"NH3 has 3 bonds + 1 lone pair, trigonal pyramidal."},
+{q:"A drug is weak acid with pKa 4. In stomach pH 2, it will be:",o:["Ionized","Non-ionized, absorbed","Destroyed","Precipitated"],a:1,e:"Weak acid in acidic pH remains non-ionized, so better absorbed in stomach."},
+{q:"Which order is correct for acidic strength?",o:["HClO4 > H2SO4 > HCl","H2SO4 > HClO4 > HCl","HCl > H2SO4 > HClO4","HClO4 > HCl > H2SO4"],a:0,e:"HClO4 is strongest acid, then H2SO4, then HCl."}
 ],
-"Physiology": [
-{q:"Normal resting heart rate of adult?",o:["40-60","60-100","100-120","120-140"],a:1,e:"Normal 60-100 beats per minute."},
-{q:"Normal Blood Pressure?",o:["90/60","120/80","140/90","160/100"],a:1,e:"Ideal 120/80 mmHg."}
-] } }
-};
-let currentCat="", currentSub="", qIndex=0, score=0;
-function showSubjects(cat){currentCat=cat;document.getElementById('home').classList.add('hidden');document.getElementById('subjects').classList.remove('hidden');document.getElementById('subTitle').innerText=data[cat].title;let h="";for(let s in data[cat].subjects){h+=`<div class="card" onclick="startQuiz('${s}')"><h2>${s}</h2><p>${data[cat].subjects[s].length} MCQs • Medium Level • Tap to Start</p></div>`}document.getElementById('subList').innerHTML=h;}
-function goHome(){document.getElementById('home').classList.remove('hidden');document.getElementById('subjects').classList.add('hidden');document.getElementById('quiz').classList.add('hidden');}
-function startQuiz(sub){currentSub=sub;qIndex=0;score=0;document.getElementById('subjects').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');document.getElementById('quizTitle').innerText=sub;showQ();}
-function showQ(){let list=data[currentCat].subjects[currentSub];let q=list[qIndex];document.getElementById('score').innerText="Score: "+score+" / "+list.length;let h=`<div class="card"><b>Q${qIndex+1}. ${q.q}</b>`;q.o.forEach((opt,i)=>{h+=`<div class="opt" onclick="check(this,${i},${q.a},'${q.e}')">${opt}</div>`});h+=`<div class="explain" id="exp"><b>Explanation:</b> ${q.e}</div></div>`;document.getElementById('qBox').innerHTML=h;}
-function check(el,i,ans,exp){let opts=document.querySelectorAll('.opt');opts.forEach(o=>o.style.pointerEvents='none');if(i===ans){el.classList.add('correct');score++;document.getElementById('score').innerText="Score: "+score;}else{el.classList.add('wrong');opts[ans].classList.add('correct');}document.getElementById('exp').style.display='block';}
-function nextQ(){let list=data[currentCat].subjects[currentSub];if(qIndex<list.length-1){qIndex++;showQ();}else{alert("Test Khatam! Score: "+score+" / "+list.length);goHome();}}
-</script>
-</body>
-</html>
+"Physics - 20 HARD":[
+{q:"A ball is thrown vertically with 20 m/s. Maximum height (g=10)?",o:["10 m","20 m","40 m","30 m"],a:1,e:"h = v^2/2g = 400/20 = 20 m."},
+{q:"Two resistors 2 ohm and 3 ohm in parallel. Equivalent resistance?",o:["5 ohm","1.2 ohm","0.83 ohm","6 ohm"],a:1,e:"1/R = 1/2 + 1/3 = 5/6, R = 6/5 = 1.2 ohm."},
+{q:"A car accelerates from 0 to 20 m/s in 5 sec. Acceleration?",o:["2 m/s2","4 m/s2","5 m/s2","10 m/s2"],a:1,e:"a = (v-u)/t = 20/5 = 4 m/s2."},
+{q:"Work done in moving charge 2C through potential difference 10V?",o:["5 J","20 J","10 J","0 J"],a:1,e:"W = QV = 2 x 10 = 20 J."},
+{q:"If wavelength of light doubles, its frequency:",o:["Doubles","Halves","Remains same","Quadruples"],a:1,e:"c = f x lambda, if lambda doubles, f halves."},
+{q:"A 70 kg patient falls from 2m height. Potential energy lost?",o:["700 J","1400 J","70 J","2800 J"],a:1,e:"PE = mgh = 70 x 10 x 2 = 1400 J."},
+{q:"Which phenomenon explains blue sky?",o:["Reflection","Refraction","Scattering","Diffraction"],a:2,e:"Rayleigh scattering: blue light scatters most by air molecules."},
+{q:"A transformer steps up 220V to 2200V. If primary has 100 turns, secondary has:",o:["1000 turns","100 turns","10 turns","10000 turns"],a:0,e:"Vs/Vp = Ns/Np, 2200/220=10, Ns=1000."},
+{q:"An X-ray tube operates at 50 kV. Minimum wavelength?",o:["0.0248 nm","0.248 nm","2.48 nm","0.00248 nm"],a:0,e:"lambda_min = hc/eV = 1240 / 50000 = 0.0248 nm."},
+{q:"A sonographer uses ultrasound 2 MHz. If speed in tissue is 1540 m/s, wavelength?",o:["0.77 mm","1.54 mm","7.7 mm","0.077 mm"],a:0,e:"lambda = v/f = 1540 / 2,000,000 = 0.00077 m = 0.77 mm."},
+{q:"Two forces 3N and 4N act at 90 degrees. Resultant?",o:["7 N","5 N","1 N","12 N"],a:1,e:"Resultant = sqrt(3^2+4^2) = 5 N."},
+{q:"A projectile has maximum range at which angle?",o:["30 deg","45 deg","60 deg","90 deg"],a:1,e:"Range = v^2 sin2theta / g, max when sin2theta=1, theta=45 deg."},
+{q:"If radius of circular motion doubles and speed remains same, centripetal force:",o:["Doubles","Halves","Remains same","Quadruples"],a:1,e:"F = mv^2/r, if r doubles, F halves."},
+{q:"A patient on ventilator has airway pressure high. This indicates:",o:["Low resistance","High resistance / obstruction","Low compliance only","Normal"],a:1,e:"High pressure = high resistance or low compliance, e.g., mucus plug, bronchospasm."},
+{q:"Efficiency of heat engine is 40%. If heat input is 500 J, work done?",o:["100 J","200 J","300 J","400 J"],a:1,e:"Efficiency = W/Qin, W = 0.4 x 500 = 200 J."},
+{q:"Doppler shift is used in medical ultrasound to measure:",o:["Bone density","Blood flow velocity","Tumor size","Brain activity"],a:1,e:"Doppler ultrasound measures blood flow velocity and direction."},
+{q:"A wire length L resistance R. If stretched to double length, new resistance?",o:["2R","4R","R/2","R"],a:1,e:"Volume constant, length double, area half, R = rho L/A becomes 4R."},
+{q:"Which has highest penetrating power?",o:["Alpha","Beta","Gamma","Proton"],a:2,e:"Gamma has highest penetration, Alpha lowest."},
+{q:"Time period of simple pendulum depends on:",o:["Mass","Length and g","Amplitude","Bob material"],a:1,e:"T = 2pi sqrt(L/g), depends only on length and g."},
+{q:"A 1000 kg car moving at 10 m/s. Kinetic energy?",o:["5000 J","50000 J","10000 J","100000 J"],a:1,e:"KE = 1/2 mv^2 = 0.5 x 1000 x 100 = 50000 J."}
+]
+}},
+para:{title:"Paramedics - Hard",subjects:{
+"Anatomy - 20 HARD":[
+{q:"Which cranial nerve is responsible for facial expression?",o:["CN V","CN VII - Facial","CN IX","CN X"],a:1,e:"CN VII Facial nerve controls muscles of facial expression."},
+{q:"A patient with fracture of mid-shaft humerus develops wrist drop. Which nerve injured?",o:["Ulnar nerve","Radial nerve","Median nerve","Axillary nerve"],a:1,e:"Radial nerve winds around mid-shaft humerus, injury causes wrist drop."},
+{q:"Which structure passes through carpal tunnel?",o:["Ulnar nerve","Median nerve","Radial artery","Flexor carpi"],a:1,e:"Median nerve + 9 tendons pass through carpal tunnel. Compression = Carpal tunnel syndrome."},
+{q:"The left coronary artery supplies mainly:",o:["Right ventricle","Left ventricle and septum","Right atrium","SA node only"],a:1,e:"Left coronary supplies left ventricle, anterior septum, most critical."},
+{q:"A patient cannot abduct arm after shoulder dislocation. Which nerve likely injured?",o:["Radial","Axillary","Median","Musculocutaneous"],a:1,e:"Axillary nerve supplies deltoid, injury causes loss of abduction."},
+{q:"Which vertebra has odontoid process (dens)?",o:["Atlas (C1)","Axis (C2)","C7","T12"],a:1,e:"Axis (C2) has dens, allows rotation of head."},
+{q:"Appendix is supplied by which artery?",o:["Ileocolic artery","Superior mesenteric","Inferior mesenteric","Appendicular from ileocolic"],a:3,e:"Appendicular artery, branch of ileocolic, supplies appendix."},
+{q:"Which muscle is known as the 'Policeman's tip' position if paralyzed?",o:["Deltoid","Erb's point - C5,C6 brachial plexus injury","Biceps","Triceps"],a:1,e:"Erb-Duchenne (C5-C6) injury: arm hangs, internally rotated - Policeman's tip."},
+{q:"Where is McBurney's point located?",o:["Left iliac fossa","1/3 from ASIS to umbilicus on right","Epigastrium","Right hypochondrium"],a:1,e:"McBurney's point is site of maximum tenderness in appendicitis."},
+{q:"Which bone forms the medial wall of orbit?",o:["Zygomatic","Ethmoid - lamina papyracea","Maxilla","Frontal"],a:1,e:"Ethmoid bone forms thin medial wall, lamina papyracea."},
+{q:"A patient has fracture of base of skull with CSF rhinorrhea. Which bone likely fractured?",o:["Parietal","Cribriform plate of ethmoid","Occipital","Mandible"],a:1,e:"Cribriform plate fracture causes CSF leak through nose."},
+{q:"Which structure is palpated for checking femoral pulse?",o:["Mid-inguinal point","Anterior superior iliac spine","Pubic symphysis","Greater trochanter"],a:0,e:"Femoral artery palpated at mid-inguinal point."},
+{q:"The diaphragm is supplied by which nerve?",o:["Vagus","Phrenic nerve C3,4,5","Intercostal","Accessory"],a:1,e:"Phrenic nerve C3,4,5 keeps diaphragm alive."},
+{q:"Which is the largest sesamoid bone?",o:["Fabella","Patella","Pisiform","Hyoid"],a:1,e:"Patella is largest sesamoid bone."},
+{q:"A patient has inability to dorsiflex foot (foot drop). Which nerve?",o:["Tibial","Common peroneal","Sural","Obturator"],a:1,e:"Common peroneal nerve injury at neck of fibula causes foot drop."},
+{q:"Which layer of heart is inflamed in pericarditis?",o:["Endocardium","Myocardium","Pericardium","Epicardium"],a:2,e:"Pericarditis = inflammation of pericardium, chest pain relieved by leaning forward."},
+{q:"The biceps brachii is supplied by which nerve?",o:["Radial","Musculocutaneous","Ulnar","Median"],a:1,e:"Musculocutaneous nerve (C5-C7) supplies biceps."},
+{q:"Which organ is retroperitoneal?",o:["Liver","Spleen","Kidney","Stomach"],a:2,e:"Kidney, pancreas, duodenum are retroperitoneal."},
+{q:"A 25-year-old with stab wound at 4th intercostal space, mid-clavicular line. Which chamber injured?",o:["Right atrium","Right ventricle","Left ventricle","Left atrium"],a:1,e:"Right ventricle is most anterior chamber, injured in anterior chest trauma."},
+{q:"Which muscle causes flexion at hip and extension at knee?",o:["Rectus femoris","Hamstring","Gastrocnemius","Sartorius"],a:0,e:"Rectus femoris is only quadriceps that crosses hip, flexes hip and extends knee."}
+],
+"Physiology - 20 HARD":[
+{q:"A patient has pH 7.30, HCO3 16, pCO2 32. Diagnosis?",o:["Respiratory acidosis","Metabolic acidosis with compensation","Respiratory alkalosis","Metabolic alkalosis"],a:1,e:"Low pH + low HCO3 = metabolic acidosis, low pCO2 is respiratory compensation."},
+{q:"Cardiac output is 5 L/min, heart rate 70. Stroke volume?",o:["35 mL","71 mL","350 mL","50 mL"],a:1,e:"CO = HR x SV, SV = 5000/70 = 71 mL."},
+{q:"Which is correct for Starling's law of heart?",o:["More preload = less force","More stretch = more force of contraction","Heart rate controls force","Afterload increases force"],a:1,e:"Increased end-diastolic volume stretches myocardium, increases force of contraction."},
+{q:"A patient has low Na, low BP, hyperpigmentation. Which disease?",o:["Cushing","Addison disease","Hyperthyroidism","Diabetes"],a:1,e:"Addison (adrenal insufficiency): low cortisol, low Na, hyperpigmentation."},
+{q:"Normal GFR is approximately:",o:["60 mL/min","125 mL/min","200 mL/min","25 mL/min"],a:1,e:"Normal GFR ~125 mL/min / 1.73 m2."},
+{q:"Which hormone increases Ca in blood?",o:["Calcitonin","Parathyroid hormone","Insulin","Thyroxine"],a:1,e:"PTH increases blood Ca by bone resorption, kidney reabsorption."},
+{q:"In a patient with severe hemorrhage, which is earliest compensatory response?",o:["Increased urine output","Baroreceptor mediated tachycardia","Decreased heart rate","Vasodilation"],a:1,e:"Baroreceptors sense low BP, cause sympathetic tachycardia and vasoconstriction."},
+{q:"Oxygen-hemoglobin dissociation curve shifts right in:",o:["Low temp, low CO2","High temp, low pH, high 2,3-BPG","High pH, low temp","Low 2,3-BPG"],a:1,e:"Right shift = decreased affinity, O2 released to tissues in exercise, acidosis, fever."},
+{q:"Which is the primary site of glucose reabsorption?",o:["Distal tubule","Proximal convoluted tubule","Loop of Henle","Collecting duct"],a:1,e:"PCT reabsorbs 100% glucose via SGLT."},
+{q:"A patient has polyuria, polydipsia, low urine osmolality. Diagnosis?",o:["Diabetes mellitus","Diabetes insipidus","SIADH","CKD"],a:1,e:"DI: ADH deficiency, large dilute urine, polydipsia."},
+{q:"Which phase of cardiac cycle is longest?",o:["Atrial systole","Ventricular systole","Ventricular diastole","Isovolumetric contraction"],a:2,e:"Diastole is longest, allows filling."},
+{q:"A patient has high K+ (hyperkalemia). ECG will show:",o:["Tall peaked T waves","U waves","Prolonged QT","ST elevation"],a:0,e:"Hyperkalemia = tall peaked T, wide QRS, sine wave."},
+{q:"What i
